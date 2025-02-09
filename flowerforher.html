@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forher</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fff5f8;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/hearts.png');
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .container, #love-letter {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            max-width: 90%;
+            width: 420px;
+            text-align: center;
+        }
+        h1 {
+            color: #c2185b;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+        }
+        input {
+            padding: 10px;
+            border: 2px solid #ff4081;
+            border-radius: 5px;
+            width: 80%;
+            margin: 10px 0;
+            font-size: 1rem;
+        }
+        button {
+            background-color: #ff4081;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        button:hover {
+            background-color: #e6005c;
+        }
+        .hidden {
+            display: none;
+        }
+        #love-letter {
+            background: #fff0f5;
+            display: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+        }
+        #love-letter h2 {
+            color: #ff4081;
+            font-size: 1.8rem;
+        }
+        @media (max-width: 500px) {
+            .container, #love-letter {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Answer to have access sa message hehehe</h1>
+        <p id="clue">First question: "What's the full date i asked to court you?"</p>
+        <input type="text" id="answer" placeholder="Enter your answer">
+        <button onclick="checkAnswer()">Submit</button>
+        <p id="message"></p>
+    </div>
+
+    <div id="love-letter" class="hidden">
+        <h2>YEYY YOU'RE HERE NAA<3</h2>
+        <p>
+            hi babyy hehehe i know you’re not expecting anything for this day pero syempre hindi ako papayag na wala
+            hehehe pluss, i do know that this day is very special to you. <3<br><br
+            I just want to say that no matter what challenges we face, we should always find our way through them
+            kasi diba that’s what makes us even strongerr. We should understand, grow, listen look and
+            listen and learn HAHAHAHAHA.<br><br>
+            I am so grateful to have you. You will forever my safe place, the one, and peace hehe(totoo ‘to kahit inaaway mo me).
+            Loving you isn’t just easy-it’s the most natural thing that i did(u don’t really stress me). Thank you for the efforts you <br>
+            do for the both o us, and i really really appreciate it, i promise to never take it for granted my love <br><br><br>
+            I’m not gonna make this long PLUS YOU ARE SO SPECIAL BEYOND WORDS, i hope you don’t forget that yieee HAHAHAHAHA(sincere
+            ako ha, happy happy lang while writing this hehe). YUN LANGG ILOVEYOUUVERYVERYMUCH MY LOVELOVE AND ME MISS U SM<3
+        </p>
+    </div>
+
+    <script>
+        const clues = [
+            { question: "What's the full date i asked to court you?", answer: "december 18, 2024" },
+            { question: "What's the name of our baby?", answer: "donut" },
+            { question: "miss mo na ba me? hehehe", answer: "yes" }
+        ];
+
+        let currentClue = 0;
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById("answer").value.toLowerCase().trim();
+            const message = document.getElementById("message");
+
+            if (userAnswer === clues[currentClue].answer) {
+                currentClue++;
+                if (currentClue < clues.length) {
+                    document.getElementById("clue").innerText = `Next question: ${clues[currentClue].question}`;
+                    message.innerText = "Correct! Here's your next question.";
+                    document.getElementById("answer").value = "";
+                } else {
+                    document.querySelector(".container").classList.add("hidden");
+                    document.getElementById("love-letter").style.display = "block";
+                }
+            } else {
+                message.innerText = "Try again, my love!";
+            }
+        }
+    </script>
+</body>
+</html>
